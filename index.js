@@ -28,6 +28,9 @@ express()
   .get('/shop/users', shopep.users)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
+
+
+
 //.get('/shop/:items', rateCalc.calculate)
 //User req.params.items to use the /shop/items sort of thing
 //to parse a body with express we do .use(express.json()) and .use(express.urlencoded({extended:true}))
