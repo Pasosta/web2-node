@@ -29,7 +29,7 @@ function users(req, response) {
     //var item = req.query.item;
 var userarray = new Array();
     console.log("user");
-    client.query('SELECT name FROM public.users;', (err, res) => {
+    client.query('SELECT username FROM public.users;', (err, res) => {
         if (err) {
             console.log(err);
         }
