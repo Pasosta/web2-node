@@ -8,20 +8,21 @@ const client = new Client({
 client.connect();
 
 
-function items(req, res, next) {
+function items(req, result, next) {
     var itemarray = new Array();
     console.log("items");
     var itemData = ["asd"];
-    client.query('SELECT * FROM public.items;', (err, res) => {
+    client.query('SELECT * FROM public.items;', (err, res, result) => {
         if (err) throw err;
         for (let row of res.rows) {
             itemarray.push(row);
         }
         itemData = {"data": itemarray};
         console.log(itemData);
-        res.send('pages/result', itemData)
+        result.send('pages/result', itemData)
         client.end();
-    });
+    })(result);
+    
 }
 
 
