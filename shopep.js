@@ -19,7 +19,7 @@ function items(req, res, next) {
         }
         itemData = {"data": itemarray};
         console.log(itemData);
-        res.render('pages/result', itemData)
+        res.send('pages/result', itemData)
         client.end();
     });
 }
