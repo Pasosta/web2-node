@@ -1,4 +1,5 @@
 const { Client } = require('pg');
+const { exec } = require('child_process');
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
