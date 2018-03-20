@@ -15,14 +15,13 @@ function items(req, res) {
     client.query('SELECT * FROM public.items;', (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
-            console.log("row:" + row);
             itemarray.push(row);
         }
         var postageData = {"data": itemarray};
         console.log(postageData);
-        res.render('pages/result', postageData);
         client.end();
     });
+    res.render('pages/result', postageData);
 }
 
 function users(req, res) {
