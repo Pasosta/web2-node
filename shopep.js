@@ -16,10 +16,10 @@ function items(req, response, next) {
         if (err) {
             console.log(err);
         }
-        itemData = response.json(res.rows);
+        itemData = {"data": res.rows};
         console.log(itemData);
-        response.render('pages/result', itemData);
-        //response.json(res.rows);
+        //response.render('pages/result', itemData);
+        response.json(itemData);
         client.end();
     });
 }
