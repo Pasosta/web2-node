@@ -20,7 +20,7 @@ function items(req, res) {
         client.end();
     });
     var postageData = {"data": itemarray};
-    
+    console.log(postgressData);
     res.render('pages/result', postageData);
 }
 
@@ -28,7 +28,6 @@ function users(req, res) {
     //var item = req.query.item;
 var userarray = new Array();
     console.log("user");
-    var postageData = {"data": userarray};
     client.query('SELECT * FROM public.items;', (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
@@ -37,6 +36,7 @@ var userarray = new Array();
         client.end();
     });
     
+    var postageData = {"data": userarray};
     res.render('pages/result', postageData);
     
     
