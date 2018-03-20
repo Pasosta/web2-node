@@ -11,7 +11,7 @@ client.connect();
 function items(req, res) {
     var itemarray = new Array();
     console.log("items");
-    var postageData = [""];
+    var postageData = ["asd"];
     client.query('SELECT * FROM public.items;', (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
