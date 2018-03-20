@@ -15,7 +15,7 @@ function items(req, res) {
     client.query('SELECT * FROM public.items;', (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
-            itemarray.append(JSON.stringify(row));
+            itemarray.push(JSON.stringify(row));
         }
         client.end();
     });
@@ -32,7 +32,7 @@ var userarray = new Array();
     client.query('SELECT * FROM public.items;', (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
-            userarray.append(JSON.stringify(row));
+            userarray.push(JSON.stringify(row));
         }
         client.end();
     });
