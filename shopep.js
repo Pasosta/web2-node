@@ -15,6 +15,7 @@ function items(req, res) {
     client.query('SELECT * FROM public.items;', (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
+            console.log("row:" + row);
             itemarray.push(row);
         }
         client.end();
