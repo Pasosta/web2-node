@@ -19,7 +19,7 @@ function items(req, response, next) {
         }
         itemData = {"data": res.rows};
         console.log(itemData);
-        result.render('pages/result', itemData);
+        //result.render('pages/result', itemData);
         response.json(res.rows);
         client.end();
     });
