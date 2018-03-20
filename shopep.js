@@ -20,9 +20,10 @@ function items(req, res) {
         var postageData = {"data": itemarray};
         console.log(postageData);
         client.end();
-    });
-    res.render('pages/result', postageData);
+    }, res.render('pages/result', postageData));
+    
 }
+
 
 function users(req, res) {
     //var item = req.query.item;
