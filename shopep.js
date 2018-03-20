@@ -20,7 +20,7 @@ function items(req, res) {
         client.end();
     });
     var postageData = {"data": itemarray};
-    console.log(postgressData);
+    console.log(postageData);
     res.render('pages/result', postageData);
 }
 

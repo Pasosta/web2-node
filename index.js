@@ -11,14 +11,6 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM public.users;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
-
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
