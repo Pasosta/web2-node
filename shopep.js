@@ -18,7 +18,7 @@ function items(req, response, next) {
             console.log(err);
         }
         itemData = {"data": res.rows};
-        console.log(itemsarray);
+        console.log(itemData);
         //result.render('pages/result', itemData);
         response.json(res.rows);
         client.end();
