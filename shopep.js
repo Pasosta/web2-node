@@ -19,7 +19,6 @@ function items(req, result, next) {
             itemarray.push(row);
         }
         itemData = {"data": itemarray};
-        express.render('pages/result', itemData);
         console.log(itemData);
         client.end();
     });
