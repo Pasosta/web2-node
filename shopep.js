@@ -8,21 +8,23 @@ const client = new Client({
 client.connect();
 
 
-function items(req, res) {
+function items(req, res, next) {
     var itemarray = new Array();
     console.log("items");
-    var postageData = ["asd"];
-    client.query('SELECT * FROM public.items;', (err, res) => {
+    var itemData = ["asd"];
+    client.query('SELECT * FROM public.items;').exec(function (err, res) {
         if (err) throw err;
         for (let row of res.rows) {
             itemarray.push(row);
         }
-        var postageData = {"data": itemarray};
+        itemData = {"data": itemarray};
         console.log(postageData);
+        res.render('pages/result', itemData);
         client.end();
     });
-    res.render('pages/result', postageData)
+    
 }
+
 
 function users(req, res) {
     //var item = req.query.item;
@@ -36,8 +38,8 @@ var userarray = new Array();
         client.end();
     });
     
-    var postageData = {"data": userarray};
-    res.render('pages/result', postageData);
+    var userData = {"data": userarray};
+    res.render('pages/result', userData);
     
     
 }
