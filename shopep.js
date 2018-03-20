@@ -1,4 +1,5 @@
 const { Client } = require('pg');
+const express = require('express')
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -18,10 +19,11 @@ function items(req, result, next) {
             itemarray.push(row);
         }
         itemData = {"data": itemarray};
+        express.render('pages/result', itemData);
         console.log(itemData);
         client.end();
     });
-    result.send('pages/result', itemData)
+    //result.send('pages/result', itemData)
 }
 
 
