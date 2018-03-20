@@ -9,19 +9,18 @@ const client = new Client({
 client.connect();
 
 
-function items(req, result, next) {
+function items(req, response, next) {
     var itemarray = new Array();
     console.log("items");
     var itemData = ["asd"];
     client.query('SELECT * FROM public.items;', (err, res) => {
-        if (err) throw err;
-        for (let row of res.rows) {
-            itemarray.push(row);
+        if (err) {
+            console.log(err);
         }
-        itemData = {"data": itemarray};
-        console.log(itemData);
+        itemData = {"data": res.rows};
+        console.log(itemsarray);
         //result.render('pages/result', itemData);
-        result.json(res.rows);
+        response.json(res.rows);
         client.end();
     });
 }
