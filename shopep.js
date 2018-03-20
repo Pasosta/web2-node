@@ -20,9 +20,10 @@ function items(req, result, next) {
         }
         itemData = {"data": itemarray};
         console.log(itemData);
+        //result.render('pages/result', itemData);
+        result.json(res.rows);
         client.end();
     });
-    //result.send('pages/result', itemData)
 }
 
 
