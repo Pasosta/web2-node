@@ -36,7 +36,7 @@ var userarray = new Array();
         var userData = {"data": res.rows};
         console.log(userData);
         //result.render('pages/result', userData);
-        response.json(res.rows);
+        response.json(userData);
         client.end();
     });
     
