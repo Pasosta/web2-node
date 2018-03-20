@@ -18,11 +18,11 @@ function items(req, res) {
             console.log("row:" + row);
             itemarray.push(row);
         }
+        var postageData = {"data": itemarray};
+        console.log(postageData);
+        res.render('pages/result', postageData);
         client.end();
     });
-    var postageData = {"data": itemarray};
-    console.log(postageData);
-    res.render('pages/result', postageData);
 }
 
 function users(req, res) {
