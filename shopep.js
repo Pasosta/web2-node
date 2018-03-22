@@ -39,16 +39,6 @@ function getItems(person, callBack) {
         callBack(null, itemData);
         client.end();
     });
-//    client.query('SELECT * FROM public.items;', (err, res) => {
-//        if (err) {
-//            console.log(err);
-//        }
-//        itemData = {"data": res.rows};
-//        console.log(itemData);
-//        //response.render('pages/result', itemData);
-//        callBack(null, itemData);
-//        client.end();
-//    });
 }
 
 
@@ -62,7 +52,7 @@ var userarray = new Array();
 }
 
 function getUser(name, pass, callBack) {
-    client.query('SELECT username FROM public.users;', (err, res) => {
+    pool.query('SELECT username FROM public.users;', (err, res) => {
         if (err) {
             console.log(err);
         }
