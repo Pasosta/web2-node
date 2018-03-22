@@ -29,7 +29,8 @@ function items(req, res, next) {
 
 //This goes in models
 function getItems(person, callBack) {
-    pool.query('SELECT * FROM public.items;', (err, res) => {
+    //this is an example of binding values
+    pool.query('SELECT * FROM public.items WHERE name = $1::text;', ["item1"], (err, res) => {
         if (err) {
             console.log(err);
         }
