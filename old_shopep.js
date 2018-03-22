@@ -9,19 +9,9 @@ const client = new Client({
 client.connect();
 
 
-//This goes into controllers
-function items(req, res, next) {
+function items(req, response, next) {
     var itemarray = new Array();
     console.log("items");
-    
-    getItems("person", (err, item) => {
-        res.json(item);
-    });
-}
-
-
-//This goes in models
-function getItems(person, callBack) {
     client.query('SELECT * FROM public.items;', (err, res) => {
         if (err) {
             console.log(err);
@@ -29,7 +19,7 @@ function getItems(person, callBack) {
         itemData = {"data": res.rows};
         console.log(itemData);
         //response.render('pages/result', itemData);
-        callback(null, itemData)
+        response.json(itemData);
         client.end();
     });
 }
