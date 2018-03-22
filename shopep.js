@@ -29,7 +29,7 @@ function getItems(person, callBack) {
         itemData = {"data": res.rows};
         console.log(itemData);
         //response.render('pages/result', itemData);
-        callback(null, itemData)
+        callBack(null, itemData)
         client.end();
     });
 }
