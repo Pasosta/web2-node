@@ -35,7 +35,7 @@ function getItems(person, callBack) {
 }
 
 
-function users(req, response) {
+function users(req, res) {
     //var item = req.query.item; this gets item from the GET ?=
 var userarray = new Array();
     console.log("user");
