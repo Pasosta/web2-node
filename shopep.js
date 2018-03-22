@@ -1,4 +1,6 @@
 const { Client } = require('pg');
+const { Pool } = require('pg');
+const pool = new Pool();
 const express = require('express')
 
 const client = new Client({
@@ -22,7 +24,7 @@ function items(req, res, next) {
 
 //This goes in models
 function getItems(person, callBack) {
-    client.query('SELECT * FROM public.items;', (err, res) => {
+    pool.query('SELECT * FROM public.items;', (err, res) => {
         if (err) {
             console.log(err);
         }
@@ -32,6 +34,16 @@ function getItems(person, callBack) {
         callBack(null, itemData);
         client.end();
     });
+//    client.query('SELECT * FROM public.items;', (err, res) => {
+//        if (err) {
+//            console.log(err);
+//        }
+//        itemData = {"data": res.rows};
+//        console.log(itemData);
+//        //response.render('pages/result', itemData);
+//        callBack(null, itemData);
+//        client.end();
+//    });
 }
 
 
