@@ -29,27 +29,30 @@ function getItems(person, callBack) {
         itemData = {"data": res.rows};
         console.log(itemData);
         //response.render('pages/result', itemData);
-        callBack(null, itemData)
+        callBack(null, itemData);
         client.end();
     });
 }
 
 
 function users(req, response) {
-    //var item = req.query.item;
+    //var item = req.query.item; this gets item from the GET ?=
 var userarray = new Array();
     console.log("user");
+    getUser("name","pass", (err, data) => {
+        res.json(data);
+    })
+}
+
+function getUser(name, pass, callBack) {
     client.query('SELECT username FROM public.users;', (err, res) => {
         if (err) {
             console.log(err);
         }
         var userData = {"data": res.rows};
-        console.log(userData);
-        //response.render('pages/result', userData);
-        response.json(userData);
+        callBack(null, userData);
         client.end();
     });
-    
 }
 
 module.exports = {users: users, items: items};
