@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="/public/node.svg">
 
     <title>Shopping Page</title>
 
@@ -90,7 +90,7 @@
                                 $("#itemTable").append("</tr><tr>");
                             }
 							console.log(item);
-							$("#itemTable").append("<td>Name: " + item.name + "<br/> Cost: " + item.cost + "<br/> Description: " + item.description + "<br/>" + newRowCheck + "<td>");
+							$("#itemTable").append("<td>" + "<img src=\"/wid" + (newRowCheck + 1) + ".png\" alt=\"Shopping Cart\"></br>" +"Name: " + item.name + "<br/> Cost: " + item.cost + "<br/> Description: " + item.description + "<td>");
                             newRowCheck++;
 						});
                         $("#itemTable").append("</tr>");
