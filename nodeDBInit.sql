@@ -26,7 +26,12 @@ insert into public.users(username, password) values
 
 insert into public.items(name, cost, description) values
 	('item1', 20.00, 'this is a description'),
-	('item2', 12.33, 'the second item');
+	('item2', 12.33, 'the second item'),
+	('item3', 33.00, 'this is a description3'),
+	('item4', 40.00, 'this is a description4'),
+	('item5', 50.00, 'this is a description5'),
+	('item6', 26.00, 'this is a description6'),
+	('item7', 20.00, 'this is a description7');
 
 insert into public.cartitems(itemid, userid) values
 	(1,1),
