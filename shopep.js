@@ -30,7 +30,8 @@ function items(req, res) {
 //This goes in models
 function getItems(person, callBack) {
     //this is an example of binding values
-    pool.query('SELECT * FROM public.items WHERE name = $1::text;', ["item1"], (err, res) => {
+   // pool.query('SELECT * FROM public.items WHERE name = $1::text;', ["item1"], (err, res) => {
+    pool.query('SELECT * FROM public.items', (err, res) => {
         if (err) {
             console.log(err);
         }

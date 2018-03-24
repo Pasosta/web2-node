@@ -48,19 +48,15 @@
             <p>There are many like them but this one could be yours!<br></p>
         </div>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="itemTable">
                 <body>
-                    <form action="/shop/items" method="get">
-                        Hit the item endpoint!<br/>
-                    <input type="submit" value="Fetch!" name="submit">
-                    </form><br/>
                     <form action="/shop/users" method="get">
                         Hit the users endpoint!<br/>
                     <input type="submit" value="Fetch!" name="submit"><br/>
                     </form>
                     
                     <button id="userButton">user</button><br/>
-                    <button id="itemButton">items</button>
+                    <button id="Add To Cart">items</button>
                 </body>
             </table>
         </div>
@@ -87,12 +83,12 @@
 					success: function (data) {
 						var items = data;
                         console.log(items);
-//						$.each(data.name, function (i, movie) {
-//							
-//							console.log(movie.Title);
-//							$("#results").append("<ul><li>Title: " + movie.Title + "</li></ul>");
-//				
-//						});
+						$.each(items.name, function (i, item) {
+							
+							console.log(item.name);
+							$("#itemTable").append("<td>Name: " + item.name + "<td>");
+				
+						});
 					}
 				});
             }
