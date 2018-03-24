@@ -89,10 +89,9 @@
                             if (newRowCheck % 3 == 0){
                                 $("#itemTable").append("</tr><tr>");
                             }
-                            newRowCheck++;
 							console.log(item);
-							$("#itemTable").append("<td>Name: " + item.name + "<td>");
-				
+							$("#itemTable").append("<td>Name: " + item.name + "<br/> Cost: "+ item.cost "<br/> Description: " + item.description + "<br/>" + newRowCheck +"<td>");
+                            newRowCheck++;
 						});
                         $("#itemTable").append("</tr>");
 					}
