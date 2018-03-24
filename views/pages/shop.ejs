@@ -56,11 +56,11 @@
                     </form><br/>
                     <form action="/shop/users" method="get">
                         Hit the users endpoint!<br/>
-                    <input type="submit" value="Fetch!" name="submit">
+                    <input type="submit" value="Fetch!" name="submit"><br/>
                     </form>
                     
-                    <button id="userButton">Search</button><br/>
-                    <button id="itemButton">Search</button>
+                    <button id="userButton">user</button><br/>
+                    <button id="itemButton">items</button>
                 </body>
             </table>
         </div>
@@ -85,7 +85,7 @@
 					type: "GET",
 					dataType: "json",
 					success: function (data) {
-						var items = JSON.parse(data);
+						var items = data;
                         console.log(items);
 //						$.each(data.name, function (i, movie) {
 //							
