@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/public/node.svg">
+    <link rel="icon" href="/node.svg">
 
     <title>Shopping Page</title>
 
@@ -95,7 +95,7 @@
                             }
 							console.log(item);
 							$("#itemTable").append("<td>" + "<img src=\"/wid" + (newRowCheck + 1) + ".png\" alt=\"Shopping Cart\" height=\"42\" width=\"42\"></br>" +"Name: " + item.name + "<br/> Cost: " + item.cost + "<br/> Description: " + item.description +
-                            "</br><button type=\"button\" class=\"btn btn-primary\" onclick=\"updateCart(" + ($i + 1) + ", " + 1
+                            "</br><button type=\"button\" class=\"btn btn-primary\" onclick=\"updateCart(" + (newRowCheck + 1) + ", " + 1
                             + ")\">Add to Cart</button></td>");
                             newRowCheck++;
 						});
