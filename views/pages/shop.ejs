@@ -83,7 +83,7 @@
 					success: function (data) {
 						var items = data;
                         console.log(items);
-						$.each(items.name, function (i, item) {
+						$.each(items, function (i, item) {
 							
 							console.log(item.name);
 							$("#itemTable").append("<td>Name: " + item.name + "<td>");
