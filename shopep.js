@@ -10,7 +10,8 @@ const express = require('express')
 
 function userItems(req, res) {
     console.log("userItems\n************\n");
-    getItemsForUser(1, (err, items) => {
+    var userId = req.query.userId
+    getItemsForUser(userId, (err, items) => {
        res.json(items); 
     });
 }
