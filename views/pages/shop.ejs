@@ -78,6 +78,25 @@
     
     <script>
     $(document).ready(function () {
+        loadItems();
+            function loadItems() {
+                $.ajax({
+					url: "/shop/items",
+					type: "GET",
+					dataType: "json",
+					success: function (data) {
+						var items = data;
+                        console.log(items);
+//						$.each(data.name, function (i, movie) {
+//							
+//							console.log(movie.Title);
+//							$("#results").append("<ul><li>Title: " + movie.Title + "</li></ul>");
+//				
+//						});
+					}
+				});
+            }
+        
 			$("#itemButton").click(function () {
 //				var searchItem = document.getElementById("searchText").value;
 				$.ajax({
