@@ -8,15 +8,8 @@ const pool = new Pool({
 
 const express = require('express')
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-
-client.connect();
-
 function userItems(req, res) {
-    console.log("userItems");
+    console.log("userItems\n************\n");
     getItemsForUser("1", (err, items) => {
        res.json(items); 
     });
