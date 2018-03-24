@@ -16,7 +16,7 @@ function userItems(req, res) {
 }
 
 function getItemsForUser(user, callBack) {
-        pool.query('SELECT name FROM public.items JOIN public.items ON public.items.id = public.cartItems.itemId JOIN public.users ON public.users.id = public.cartItems.userId WHERE public.users.id = $1::text;', [user], (err, res) => {
+        pool.query('SELECT name FROM public.items JOIN public.cartItems ON public.items.id = public.cartItems.itemId JOIN public.users ON public.cartItems.userId = public.users.id WHERE public.users.id = $1::text;', [user], (err, res) => {
         if (err) {
             console.log(err);
             callBack(err);
