@@ -86,10 +86,10 @@
                         $("#itemTable").append("<tr>");
                         var newRowCheck = 0;
 						$.each(items.data, function (i, item) {
-							newRowCheck++;
                             if (newRowCheck % 3 == 0){
                                 $("#itemTable").append("</tr><tr>");
                             }
+                            newRowCheck++;
 							console.log(item);
 							$("#itemTable").append("<td>Name: " + item.name + "<td>");
 				
