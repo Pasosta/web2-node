@@ -15,25 +15,45 @@ const client = new Client({
 
 client.connect();
 
+function userItems(req, res) {
+    console.log("userItems");
+    getItemsForUser("1", (err, items) => {
+       res.json(items); 
+    });
+}
+
+function getItemsForUser(user, callBack) {
+        pool.query('SELECT name FROM public.items JOIN public.items.id ON public.items.id = public.cartItems.itemId JOIN public.users ON public.users.id = public.cartItems.userId WHERE public.users.id = $1::text;', [user], (err, res) => {
+        if (err) {
+            console.log(err);
+            callBack(err);
+        }
+        itemData = {"data": res.rows};
+        console.log(itemData);
+        //response.render('pages/result', itemData);
+        callBack(null, itemData);
+        client.end();
+    });
+}
+
 
 //This goes into controllers
 function items(req, res) {
-    var itemarray = new Array();
     console.log("items");
-    
-    getItems("person", (err, item) => {
+    getItems((err, item) => {
         res.json(item);
     });
 }
 
 
 //This goes in models
-function getItems(person, callBack) {
+function getItems(callBack) {
     //this is an example of binding values
    // pool.query('SELECT * FROM public.items WHERE name = $1::text;', ["item1"], (err, res) => {
     pool.query('SELECT * FROM public.items', (err, res) => {
         if (err) {
             console.log(err);
+            callBack(err);
         }
         itemData = {"data": res.rows};
         console.log(itemData);
@@ -64,4 +84,4 @@ function getUser(name, pass, callBack) {
     });
 }
 
-module.exports = {users: users, items: items};
+module.exports = {users: users, items: items, userItems: userItems};
