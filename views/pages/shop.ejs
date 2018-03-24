@@ -49,15 +49,6 @@
         </div>
         <div class="table-responsive">
             <table class="table" id="itemTable">
-                <body>
-                    <form action="/shop/users" method="get">
-                        Hit the users endpoint!<br/>
-                    <input type="submit" value="Fetch!" name="submit"><br/>
-                    </form>
-                    
-                    <button id="userButton">user</button><br/>
-                    <button id="itemButton">items</button>
-                </body>
             </table>
         </div>
 
@@ -74,7 +65,8 @@
     
     <script>
         function updateCart(id, quantity) {
-            console.log("ID: " + id + "Quantity: " + quantity);
+            console.log("ID: " + id + " Quantity: " + quantity);
+            document.getElementById("cartNum").innerHTML = Number(document.getElementById("cartNum").innerHTML) + Number(quantity);
         }
         
     $(document).ready(function () {
