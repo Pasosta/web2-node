@@ -74,7 +74,7 @@
     
     <script>
         function updateCart(id, quantity) {
-            
+            console.log("ID: " + id + "Quantity: " + quantity);
         }
         
     $(document).ready(function () {
@@ -94,7 +94,7 @@
                                 $("#itemTable").append("</tr><tr>");
                             }
 							console.log(item);
-							$("#itemTable").append("<td>" + "<img src=\"/wid" + (newRowCheck + 1) + ".png\" alt=\"Shopping Cart\" height=\"42\" width=\"42\"></br>" +"Name: " + item.name + "<br/> Cost: " + item.cost + "<br/> Description: " + item.description +
+							$("#itemTable").append("<td>" + "<img src=\"/wid" + (newRowCheck + 1) + ".png\" alt=\"Shopping Cart\" height=\"120\" width=\"120\"></br>" +"Name: " + item.name + "<br/> Cost: " + item.cost + "<br/> Description: " + item.description +
                             "</br><button type=\"button\" class=\"btn btn-primary\" onclick=\"updateCart(" + (newRowCheck + 1) + ", " + 1
                             + ")\">Add to Cart</button></td>");
                             newRowCheck++;
