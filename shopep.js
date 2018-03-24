@@ -17,7 +17,7 @@ client.connect();
 
 
 //This goes into controllers
-function items(req, res, next) {
+function items(req, res) {
     var itemarray = new Array();
     console.log("items");
     
