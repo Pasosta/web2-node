@@ -58,6 +58,9 @@
                         Hit the users endpoint!<br/>
                     <input type="submit" value="Fetch!" name="submit">
                     </form>
+                    
+                    <button id="userButton">Search</button><br/>
+                    <button id="itemButton">Search</button>
                 </body>
             </table>
         </div>
@@ -74,25 +77,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <script>
-    		$(document).ready(function () {
-			$("#search").click(function () {
-				var searchItem = document.getElementById("searchText").value;
+    $(document).ready(function () {
+			$("#itemButton").click(function () {
+//				var searchItem = document.getElementById("searchText").value;
 				$.ajax({
-					url: "http://www.omdbapi.com/?apikey=byuidaho&s=" + searchItem,
+					url: "/shop/items",
 					type: "GET",
 					dataType: "json",
 					success: function (data) {
-						//var movies = JSON.parse(data);
-						$.each(data.Search, function (i, movie) {
-							
-							console.log(movie.Title);
-							$("#results").append("<ul><li>Title: " + movie.Title + "</li></ul>");
-				
-						});
+						var items = JSON.parse(data);
+                        console.log(items);
+//						$.each(data.name, function (i, movie) {
+//							
+//							console.log(movie.Title);
+//							$("#results").append("<ul><li>Title: " + movie.Title + "</li></ul>");
+//				
+//						});
 					}
 				});
 			});
-		});
+                
+                
+                
+   });
     </script>
 
 </body>
