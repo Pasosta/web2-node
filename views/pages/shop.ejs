@@ -56,7 +56,7 @@
                     </form>
                     
                     <button id="userButton">user</button><br/>
-                    <button id="Add To Cart">items</button>
+                    <button id="itemButton">items</button>
                 </body>
             </table>
         </div>
@@ -73,6 +73,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <script>
+        function updateCart(id, quantity) {
+            
+        }
+        
     $(document).ready(function () {
         loadItems();
             function loadItems() {
@@ -90,7 +94,9 @@
                                 $("#itemTable").append("</tr><tr>");
                             }
 							console.log(item);
-							$("#itemTable").append("<td>" + "<img src=\"/wid" + (newRowCheck + 1) + ".png\" alt=\"Shopping Cart\"></br>" +"Name: " + item.name + "<br/> Cost: " + item.cost + "<br/> Description: " + item.description + "<td>");
+							$("#itemTable").append("<td>" + "<img src=\"/wid" + (newRowCheck + 1) + ".png\" alt=\"Shopping Cart\" height=\"42\" width=\"42\"></br>" +"Name: " + item.name + "<br/> Cost: " + item.cost + "<br/> Description: " + item.description +
+                            "</br><button type=\"button\" class=\"btn btn-primary\" onclick=\"updateCart(" + ($i + 1) + ", " + 1
+                            + ")\">Add to Cart</button></td>");
                             newRowCheck++;
 						});
                         $("#itemTable").append("</tr>");
