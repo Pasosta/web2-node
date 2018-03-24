@@ -26,7 +26,6 @@ function getItemsForUser(user, callBack) {
         console.log(itemData);
         //response.render('pages/result', itemData);
         callBack(null, itemData);
-        client.end();
     });
 }
 
@@ -53,7 +52,6 @@ function getItems(callBack) {
         console.log(itemData);
         //response.render('pages/result', itemData);
         callBack(null, itemData);
-        client.end();
     });
 }
 
@@ -74,7 +72,6 @@ function getUser(name, pass, callBack) {
         }
         var userData = {"data": res.rows};
         callBack(null, userData);
-        client.end();
     });
 }
 
