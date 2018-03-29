@@ -3,7 +3,6 @@ const path = require('path')
 const session = require('express-session')
 const PORT = process.env.PORT || 5000
 var shopep = require('./shopep.js')
-var logProc = require('./loginProcessing.js')
 const { Client } = require('pg');
 
 const client = new Client({
