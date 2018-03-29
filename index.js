@@ -18,22 +18,22 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/login'))
-  .get('/login', login, verifyLogin, (req, res) => res.render('pages/shop'))
+  .get('/login', login)
   .get('/shop/items', verifyLogin, shopep.items)
   .get('/shop/users', shopep.users)
   .get('/shop/userItems', shopep.userItems)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-function login(req, res, next) {
+function login(req, res) {
     if (req.body.username == 'admin' && req.body.password == 'password' ) {
         req.session.loggedIn = true;
         res.json({success: true});
-        next();
+        res.redirect('/shop/items');
     } else {
         req.session.loggedIn = false;
         res.json({success: false});
-        next();
+        res.redirect('/');
     }
 }
 
