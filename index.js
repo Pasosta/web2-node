@@ -16,6 +16,11 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(express.json())
   .use(express.urlencoded({extended: true}))
+  .use(session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true
+   }))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/login'))
