@@ -29,11 +29,9 @@ function login(req, res) {
     if (req.body.username == 'admin' && req.body.password == 'password' ) {
         req.session.loggedIn = true;
         res.json({success: true});
-        res.redirect('/shop/items');
     } else {
         req.session.loggedIn = false;
         res.json({success: false});
-        res.redirect('/');
     }
 }
 

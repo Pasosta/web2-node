@@ -10,9 +10,9 @@ function login() {
     console.log("loggin in");
 	$.post("/login", params, function(result) {
 		if (result && result.success) {
-			$("#status").text("Successfully logged in.");
+			console.log("success\n");
 		} else {
-			$("#status").text("Error logging in.");
+			console.log("failure\n");
 		}
 	});
 }
