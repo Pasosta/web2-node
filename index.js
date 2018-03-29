@@ -3,6 +3,7 @@ const path = require('path')
 const session = require('express-session')
 const PORT = process.env.PORT || 5000
 var shopep = require('./shopep.js')
+var logProc = require('./loginProcessing.js')
 const { Client } = require('pg');
 
 const client = new Client({
@@ -17,9 +18,29 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/login'))
-  .get('/shop/items', shopep.items)
+  .get('/login', login, verifyLogin, (req, res) => res.render('pages/shop'))
+  .get('/shop/items', verifyLogin, shopep.items)
   .get('/shop/users', shopep.users)
   .get('/shop/userItems', shopep.userItems)
-  .post('/login', login)
-  .post('/logout', logOut)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
+function login(req, res, next) {
+    if (req.body.username == 'admin' && req.body.password == 'password' ) {
+        req.session.loggedIn = true;
+        res.json({success: true});
+        next();
+    } else {
+        req.session.loggedIn = false;
+        res.json({success: false});
+        next();
+    }
+}
+
+function verifyLogin(req, res, next) {
+    if (!req.session.username) {
+        res.redirect('/');
+    } else {
+        next();
+    }
+}

@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-    <scipt src="loginProcessing.js"></scipt>
 
     <title>Budget Login</title>
 
@@ -39,9 +38,11 @@
 
         <div class="starter-template">
             <h1>Budget Application</h1>
-            <input type="text" name="userNameBox" placeholder="User Name" required><br/><br/>
-            <input type="text" name="passwordBox" placeholder="Password" required><br/><br/>
-            <button class="btn btn-primary btn-md" onclick="login();">Log in</button>
+            <form action="/shop/items" method="post">
+                <input type="text" name="userNameBox" id="username" placeholder="User Name" required><br/><br/>
+                <input type="text" name="passwordBox" id="password" placeholder="Password" required><br/><br/>
+                <input type="submit" name="logIn" class="btn btn-primary btn-md" value="Log In">
+            </form>
             <button class="btn btn-outline-success" onclick="location.href='./createAccount.js'">Create Account</button>
         </div>
     </main>
