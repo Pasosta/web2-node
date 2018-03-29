@@ -7,6 +7,7 @@ function login() {
 		password: password
 	};
 
+    console.log("loggin in");
 	$.post("/login", params, function(result) {
 		if (result && result.success) {
 			$("#status").text("Successfully logged in.");

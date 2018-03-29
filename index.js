@@ -25,6 +25,7 @@ express()
 
 
 function login(req, res) {
+    console.log("made to middle\n");
     if (req.body.username == 'admin' && req.body.password == 'password' ) {
         req.session.loggedIn = true;
         res.json({success: true});
