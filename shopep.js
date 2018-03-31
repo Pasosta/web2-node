@@ -27,7 +27,7 @@ function auth(req, res) {
 }
 
 function checkCreds(name, pass, callBack) {
-    pool.query('SELECT password FROM public.users WHERE username = $1::text);', [name], (err, res) => {
+    pool.query('SELECT password FROM public.users WHERE username = $1::text;', [name], (err, res) => {
         if (err) {
             console.log(err);
             callBack(err);
