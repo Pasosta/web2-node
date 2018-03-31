@@ -39,10 +39,7 @@ function registerNew(req, res) {
     console.log("made to register");
     console.log(req.body.username);
     console.log(req.body.password);
-    bcrypt.hash('myPassword', 10, function(err, hash) {
-        req.body.password = hash;
-        shopep.registerNew(req, res);
-    });
+    shopep.registerNew(req, res);
     //Add code to call the insert endpoint here
     res.redirect('/');
 }

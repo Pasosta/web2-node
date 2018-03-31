@@ -10,20 +10,23 @@ const express = require('express')
 function registerNew(req, res) {
     console.log("registering");
     addUser(req.body.username, req.body.password, (err, success) => {
-       console.log(success); 
+       console.log(success + "Success");
+        res.redirect('/');
     });
 }
 
 function addUser(user, pass, callBack) {
-        pool.query('INSERT INTO public.users (username, password) VALUES ($1::text, $2::text);', [user, pass], (err, res) => {
-        if (err) {
-            console.log(err);
-            callBack(err);
-        }
-        itemData = {"data": res.rows};
-        console.log(itemData);
-        //response.render('pages/result', itemData);
-        callBack(null, itemData);
+    bcrypt.hash(pass, 10, function(err, hash) {
+        pool.query('INSERT INTO public.users (username, password) VALUES ($1::text, $2::text);', [user, hash], (err, res) => {
+            if (err) {
+                console.log(err);
+                callBack(err);
+            }
+            itemData = {"data": res.rows};
+            console.log(itemData);
+            //response.render('pages/result', itemData);
+            callBack(null, itemData);
+        });
     });
 }
 
