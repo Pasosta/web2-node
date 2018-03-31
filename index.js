@@ -40,32 +40,22 @@ function registerNew(req, res) {
     console.log(req.body.username);
     console.log(req.body.password);
     shopep.registerNew(req, res);
-    //Add code to call the insert endpoint here
     res.redirect('/');
 }
 
 function login(req, res) {
     console.log("made to middle\n");
-//    bcrypt.compare('somePassword', hash, function(err, res) {
-//        if(res) {
-//            req.session.username = req.body.username;
-//            console.log(req.session.username);
-//            req.session.loggedIn = true;
-//            res.json({success: true});
-//        } else {
-//            req.session.loggedIn = false;
-//            res.json({success: false});
-//        } 
-//    });
-    if (req.body.username == 'admin' && req.body.password == 'password' ) {
-        req.session.username = req.body.username;
-        console.log(req.session.username);
-        req.session.loggedIn = true;
-        res.json({success: true});
-    } else {
-        req.session.loggedIn = false;
-        res.json({success: false});
-    }
+    shopep.auth(req, res);
+    //TODO: finish this compare and login will be done
+//    if (req.body.username == 'admin' && req.body.password == 'password' ) {
+//        req.session.username = req.body.username;
+//        console.log(req.session.username);
+//        req.session.loggedIn = true;
+//        res.json({success: true});
+//    } else {
+//        req.session.loggedIn = false;
+//        res.json({success: false});
+//    }
 }
 
 function verifyLogin(req, res, next) {

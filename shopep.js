@@ -8,6 +8,37 @@ const pool = new Pool({
 
 const express = require('express')
 
+function auth(req, res) {
+    checkCreds(req.body.username, req.body.password, (err, success) => {
+        if(err) {
+            req.session.loggedIn = false;
+            console.log("Failed to login");
+            res.redirect("/");
+        } else {
+            req.session.username = req.body.username;
+            console.log("success");
+            req.session.loggedIn = true;
+            res.redirect("/shop");
+        }
+    });
+}
+
+function checkCreds(name, pass, callBack) {
+    pool.query('SELECT password FROM public.users WHERE username = $1::text);', [name], (err, res) => {
+        if (err) {
+            console.log(err);
+            callBack(err);
+        }
+        bcrypt.compare(res.rows.first, hash, function(err, res) {
+            if(res) {
+                callBack(null, "success");
+            } else {
+                callBack("failed");
+            } 
+        });       
+    });
+}
+
 function registerNew(req, res) {
     console.log("registering");
     addUser(req.body.username, req.body.password, (err, success) => {
@@ -99,4 +130,4 @@ function getUser(name, pass, callBack) {
     });
 }
 
-module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew};
+module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew, auth: auth};
