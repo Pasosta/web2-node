@@ -33,6 +33,8 @@ function checkCreds(name, pass, callBack) {
             callBack(err);
         }
         console.log("res " + res);
+        console.log("pass" + pass);
+        console.log("fetched: " + res.rows[0]);
         bcrypt.compare(pass, res.rows[0], function(err, res) {
             if(res) {
                 callBack(null, "success");
