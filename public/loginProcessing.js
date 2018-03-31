@@ -13,9 +13,8 @@ function login() {
     console.log("loggin in");
 	$.post("/login", params, function(result) {
 		if (result && result.success) {
-            req.session.username = req.body.username;
-            console.log(req.session.username);
 			console.log("success\n");
+            $.get("/shop");
 		} else {
 			console.log("failure\n");
 		}
