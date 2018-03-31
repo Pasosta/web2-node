@@ -25,6 +25,7 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/login'))
   .post('/login', login)
+  .post('/registerNew', registerNew)
   .get('/createAccount', (req, res) => res.render('pages/createAccount'))
   .get('/shop', (req, res) => res.render('pages/shop'))
   .get('/shop/items', verifyLogin, shopep.items)
@@ -32,6 +33,10 @@ express()
   .get('/shop/userItems', shopep.userItems)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
+
+function registerNew(req, res) {
+    console.log("made to register");
+}
 
 function login(req, res) {
     console.log("made to middle\n");
