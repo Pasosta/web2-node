@@ -15,7 +15,7 @@ function registerNew(req, res) {
 }
 
 function addUser(user, pass, callBack) {
-        pool.query('INSERT INTO public.users (username, password) VALUES ($1::String, $2::String);', [user, pass], (err, res) => {
+        pool.query('INSERT INTO public.users (username, password) VALUES ($1::text, $2::text);', [user, pass], (err, res) => {
         if (err) {
             console.log(err);
             callBack(err);
