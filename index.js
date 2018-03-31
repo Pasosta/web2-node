@@ -36,6 +36,7 @@ express()
 
 function registerNew(req, res) {
     console.log("made to register");
+    //Add code to call the insert endpoint here
     res.redirect('/');
 }
 
