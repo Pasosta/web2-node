@@ -43,7 +43,7 @@ function registerNew(req, res) {
 //        // Store hash in database
 //    });
     //Add code to call the insert endpoint here
-    res.redirect('/');
+   // res.redirect('/');
 }
 
 function login(req, res) {
