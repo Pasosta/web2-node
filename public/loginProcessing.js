@@ -31,4 +31,8 @@ function logout() {
 	});
 }
 
+function createAccount() {
+    window.location.replace("/createAccount");
+}
+
 module.exports = {login: login, logout: logout};
