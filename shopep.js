@@ -12,16 +12,18 @@ function auth(req, res) {
     console.log("authorizing");
     console.log(req.body.username);
     checkCreds(req.body.username, req.body.password, (err, success) => {
-        if(err) {
-            req.session.loggedIn = false;
-            console.log("Failed to login");
-            res.redirect("/");
-        } else {
-            req.session.username = req.body.username;
-            console.log("success");
-            req.session.loggedIn = true;
-            res.redirect("/shop");
-        }
+        console.log("error: " + err);
+        console.log("Success: " + success);
+//        if (err) {
+//            req.session.loggedIn = false;
+//            console.log("Failed to login");
+//            res.redirect("/");
+//        } else {
+//            req.session.username = req.body.username;
+//            console.log("success");
+//            req.session.loggedIn = true;
+//            res.redirect("/shop");
+//        }
     });
 }
 
@@ -31,7 +33,7 @@ function checkCreds(name, pass, callBack) {
             console.log(err);
             callBack(err);
         }
-        console.log("res" + res);
+        console.log("res " + res);
 //        bcrypt.compare(res.rows[0], hash, function(err, res) {
 //            if(res) {
 //                callBack(null, "success");
