@@ -29,7 +29,7 @@ function checkCreds(name, pass, callBack) {
             console.log(err);
             callBack(err);
         }
-        bcrypt.compare(res.rows.first, hash, function(err, res) {
+        bcrypt.compare(res.rows[0], hash, function(err, res) {
             if(res) {
                 callBack(null, "success");
             } else {
