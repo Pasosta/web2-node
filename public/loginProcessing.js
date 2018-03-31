@@ -14,7 +14,7 @@ function login() {
 	$.post("/login", params, function(result) {
 		if (result && result.success) {
 			console.log("success\n");
-            window.location.replace("shop.ejs");
+            window.location.replace("/shop");
 		} else {
 			console.log("failure\n");
 		}
