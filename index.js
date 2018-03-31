@@ -46,6 +46,7 @@ function registerNew(req, res) {
 function login(req, res) {
     console.log("made to middle\n");
     shopep.auth(req, res);
+    
     //TODO: finish this compare and login will be done
 //    if (req.body.username == 'admin' && req.body.password == 'password' ) {
 //        req.session.username = req.body.username;
