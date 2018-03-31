@@ -26,7 +26,7 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/login'))
   .post('/login', login)
-  .post('/registerNew', registerNew)
+  .post('/registerNew', shopep.registerNew)
   .get('/createAccount', (req, res) => res.render('pages/createAccount'))
   .get('/shop', (req, res) => res.render('pages/shop'))
   .get('/shop/items', verifyLogin, shopep.items)
@@ -39,11 +39,12 @@ function registerNew(req, res) {
     console.log("made to register");
     console.log(req.body.username);
     console.log(req.body.password);
-//    bcrypt.hash('myPassword', 10, function(err, hash) {
-//        // Store hash in database
-//    });
+    bcrypt.hash('myPassword', 10, function(err, hash) {
+        req.body.password = hash;
+        shopep.registerNew(req, res);
+    });
     //Add code to call the insert endpoint here
-   // res.redirect('/');
+    res.redirect('/');
 }
 
 function login(req, res) {

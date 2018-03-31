@@ -1,4 +1,3 @@
-const { Client } = require('pg');
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -7,6 +6,26 @@ const pool = new Pool({
 });
 
 const express = require('express')
+
+function registerNew(req, res) {
+    console.log("registering");
+    addUser(req.body.username, req.body.password, (err, success) => {
+       console.log(success); 
+    });
+}
+
+function addUser(user, pass, callBack) {
+        pool.query('INSERT INTO public.users (username, password) VALUES ($1::string, $2::string);', [user, pass], (err, res) => {
+        if (err) {
+            console.log(err);
+            callBack(err);
+        }
+        itemData = {"data": res.rows};
+        console.log(itemData);
+        //response.render('pages/result', itemData);
+        callBack(null, itemData);
+    });
+}
 
 function userItems(req, res) {
     console.log("userItems\n************\n");
@@ -76,4 +95,4 @@ function getUser(name, pass, callBack) {
     });
 }
 
-module.exports = {users: users, items: items, userItems: userItems};
+module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew};
