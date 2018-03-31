@@ -46,6 +46,7 @@ function login(req, res) {
 
 function verifyLogin(req, res, next) {
     if (!req.session.username) {
+        console.log('redirected');
         res.redirect('/');
     } else {
         next();
