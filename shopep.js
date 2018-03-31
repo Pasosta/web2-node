@@ -6,9 +6,10 @@ const pool = new Pool({
   ssl: true,
 });
 
-const express = require('express')
+const express = require('express');
 
 function auth(req, res) {
+    console.log("authorizing");
     checkCreds(req.body.username, req.body.password, (err, success) => {
         if(err) {
             req.session.loggedIn = false;
@@ -30,13 +31,13 @@ function checkCreds(name, pass, callBack) {
             callBack(err);
         }
         console.log("res" + res);
-        bcrypt.compare(res.rows[0], hash, function(err, res) {
-            if(res) {
-                callBack(null, "success");
-            } else {
-                callBack("failed");
-            } 
-        });       
+//        bcrypt.compare(res.rows[0], hash, function(err, res) {
+//            if(res) {
+//                callBack(null, "success");
+//            } else {
+//                callBack("failed");
+//            } 
+//        });       
     });
 }
 
