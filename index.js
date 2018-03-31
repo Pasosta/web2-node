@@ -36,6 +36,7 @@ express()
 
 function registerNew(req, res) {
     console.log("made to register");
+    res.redirect('/');
 }
 
 function login(req, res) {
