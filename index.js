@@ -1,8 +1,9 @@
-const express = require('express')
-const path = require('path')
-const session = require('express-session')
-const PORT = process.env.PORT || 5000
-var shopep = require('./shopep.js')
+const express = require('express');
+const path = require('path');
+const session = require('express-session');
+const bcrypt = require('bcrypt');
+const PORT = process.env.PORT || 5000;
+var shopep = require('./shopep.js');
 const { Client } = require('pg');
 
 const client = new Client({
