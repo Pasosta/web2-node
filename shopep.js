@@ -10,6 +10,7 @@ const express = require('express');
 
 function auth(req, res) {
     console.log("authorizing");
+    console.log(req.body.username);
     checkCreds(req.body.username, req.body.password, (err, success) => {
         if(err) {
             req.session.loggedIn = false;
