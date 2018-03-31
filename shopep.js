@@ -21,7 +21,7 @@ function auth(req, res) {
             req.session.username = req.body.username;
             console.log("success 22");
             req.session.loggedIn = true;
-            res.redirect("/shop/items");
+            res.json({success: "Success"});
         }
     });
 }
