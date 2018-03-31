@@ -19,7 +19,7 @@ function auth(req, res) {
             res.redirect("/");
         } else {
             req.session.username = req.body.username;
-            console.log("success");
+            console.log("success 22");
             req.session.loggedIn = true;
             res.redirect("/shop");
         }
