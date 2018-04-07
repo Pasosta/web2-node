@@ -55,12 +55,13 @@ function registerNew(req, res) {
 
 function addToCart(req, res) {
     console.log("adding item to cart");
-//    insertItem(req.body.itemid, req.body.userid, (err, success) => {
-//       console.log(success + " successfully added");
-//    });
+    insertItem(req.body.itemid, req.body.userid, (err, success) => {
+       console.log(success + " successfully added");
+    });
 }
 
 function insertItem(itemid, userid, callBack) {
+    console.log("inserting item");
     pool.query('INSERT INTO public.cartitems (itemid, userid) VALUES ($1::text, $2::text);', [itemid, userid], (err, res) => {
         if (err) {
             console.log(err);
@@ -103,7 +104,6 @@ function getItemsForUser(user, callBack) {
         }
         itemData = {"data": res.rows};
         console.log(itemData);
-        //response.render('pages/result', itemData);
         callBack(null, itemData);
     });
 }
@@ -111,7 +111,6 @@ function getItemsForUser(user, callBack) {
 
 //This goes into controllers
 function items(req, res) {
-    console.log("items");
     getItems((err, item) => {
         res.json(item);
     });
@@ -120,28 +119,23 @@ function items(req, res) {
 
 //This goes in models
 function getItems(callBack) {
-    //this is an example of binding values
-   // pool.query('SELECT * FROM public.items WHERE name = $1::text;', ["item1"], (err, res) => {
     pool.query('SELECT * FROM public.items', (err, res) => {
         if (err) {
             console.log(err);
             callBack(err);
         }
         itemData = {"data": res.rows};
-        console.log(itemData);
-        //response.render('pages/result', itemData);
         callBack(null, itemData);
     });
 }
 
 
 function users(req, res) {
-    //var item = req.query.item; this gets item from the GET ?=
-var userarray = new Array();
+    var userarray = new Array();
     console.log("user");
     getUser("name","pass", (err, data) => {
         res.json(data);
-    })
+    });
 }
 
 function getUser(name, pass, callBack) {
