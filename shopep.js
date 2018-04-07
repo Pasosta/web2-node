@@ -154,4 +154,4 @@ function getUser(name, pass, callBack) {
     });
 }
 
-module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew, auth: auth, insertItem: insertItem};
+module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew, auth: auth, addToCart: addToCart};
