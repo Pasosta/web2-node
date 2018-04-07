@@ -64,6 +64,15 @@
         function updateCart(id, quantity) {
             console.log("ID: " + id + " Quantity: " + quantity);
             document.getElementById("cartNum").innerHTML = Number(document.getElementById("cartNum").innerHTML) + Number(quantity);
+            $.ajax({
+				url: "/shop/addToCart",
+				type: "POST",
+				dataType: "json",
+				success: function (data) {
+				    var items = data;
+                    console.log(items);
+				}
+            });
         }
         
     $(document).ready(function () {
@@ -95,15 +104,7 @@
         
         //TODO: make this insert items for the user
 			$("#itemButton").click(function () {
-				$.ajax({
-					url: "/shop/addToCart",
-					type: "POST",
-					dataType: "json",
-					success: function (data) {
-						var items = data;
-                        console.log(items);
-					}
-				});
+
 			});      
    });
     </script>
