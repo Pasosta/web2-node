@@ -68,7 +68,7 @@ function insertItem(itemid, username, callBack) {
             console.log(err);
             callBack(err);
         }
-        console.log("response: " + res);
+        console.log("response: " + res.rows);
         pool.query('INSERT INTO public.cartitems (itemid, userid) VALUES ($1::integer, $2::integer);', [itemid, res.row], (err, res) => {
             if (err) {
                 console.log(err);
