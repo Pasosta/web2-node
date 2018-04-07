@@ -56,7 +56,7 @@ function registerNew(req, res) {
 function addToCart(req, res) {
     console.log("adding item to cart");
     insertItem(req.body.itemid, req.body.userid, (err, success) => {
-       console.log(success : " successfully added");
+       console.log(success + " successfully added");
     });
 }
 
