@@ -48,8 +48,27 @@ function checkCreds(name, pass, callBack) {
 function registerNew(req, res) {
     console.log("registering");
     addUser(req.body.username, req.body.password, (err, success) => {
-       console.log(success + "Success");
+       console.log(success + " Success");
         res.redirect('/');
+    });
+}
+
+function addToCart(req, res) {
+    console.log("adding item to cart");
+    insertItem(req.body.itemid, req.body.userid, (err, success) => {
+       console.log(success : " successfully added");
+    });
+}
+
+function insertItem(itemid, userid, callBack) {
+    pool.query('INSERT INTO public.cartitems (itemid, userid) VALUES ($1::text, $2::text);', [itemid, userid], (err, res) => {
+        if (err) {
+            console.log(err);
+            callBack(err);
+        }
+        itemData = {"data": res.rows};
+        console.log(itemData);
+        callBack(null, itemData);
     });
 }
 
@@ -62,7 +81,6 @@ function addUser(user, pass, callBack) {
             }
             itemData = {"data": res.rows};
             console.log(itemData);
-            //response.render('pages/result', itemData);
             callBack(null, itemData);
         });
     });
@@ -136,4 +154,4 @@ function getUser(name, pass, callBack) {
     });
 }
 
-module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew, auth: auth};
+module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew, auth: auth, insertItem: insertItem};

@@ -93,27 +93,18 @@
 				});
             }
         
+        //TODO: make this insert items for the user
 			$("#itemButton").click(function () {
-//				var searchItem = document.getElementById("searchText").value;
 				$.ajax({
 					url: "/shop/items",
-					type: "GET",
+					type: "POST",
 					dataType: "json",
 					success: function (data) {
-						var items = data;
-                        console.log(items);
-//						$.each(data.name, function (i, movie) {
-//							
-//							console.log(movie.Title);
-//							$("#results").append("<ul><li>Title: " + movie.Title + "</li></ul>");
-//				
-//						});
+						
+                        console.log("in item burron success: " + data);
 					}
 				});
-			});
-                
-                
-                
+			});      
    });
     </script>
 
