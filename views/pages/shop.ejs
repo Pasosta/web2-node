@@ -61,6 +61,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <script>
+        //This needs to give the post the itemId and the userID for the insert to work
         function updateCart(id, quantity) {
             console.log("ID: " + id + " Quantity: " + quantity);
             document.getElementById("cartNum").innerHTML = Number(document.getElementById("cartNum").innerHTML) + Number(quantity);
@@ -68,6 +69,9 @@
 				url: "/shop/addToCart",
 				type: "POST",
 				dataType: "json",
+                data: {
+                    "itemID" : id 
+                },
 				success: function (data) {
 				    var items = data;
                     console.log(items);

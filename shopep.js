@@ -55,22 +55,30 @@ function registerNew(req, res) {
 
 function addToCart(req, res) {
     console.log("adding item to cart");
-    insertItem(req.body.itemid, req.body.userid, (err, success) => {
+    insertItem(req.body.itemID, req.session.username, (err, success) => {
        console.log(success + " successfully added");
     });
 }
 
-function insertItem(itemid, userid, callBack) {
+function insertItem(itemid, username, callBack) {
     console.log("inserting item");
-    pool.query('INSERT INTO public.cartitems (itemid, userid) VALUES ($1::integer, $2::integer);', [itemid, userid], (err, res) => {
+    console.log("insertion username" + username);
+    pool.query('SELECT id from public.users WHERE username = $1::text;',[username], (err, res) => {
         if (err) {
             console.log(err);
             callBack(err);
         }
-        itemData = {"data": res.rows};
-        console.log(itemData);
-        callBack(null, itemData);
+        pool.query('INSERT INTO public.cartitems (itemid, userid) VALUES ($1::integer, $2::integer);', [itemid, userid], (err, res) => {
+            if (err) {
+                console.log(err);
+                callBack(err);
+            }
+            itemData = {"data": res.rows};
+            console.log(itemData);
+            callBack(null, itemData);
+        }); 
     });
+
 }
 
 function addUser(user, pass, callBack) {
