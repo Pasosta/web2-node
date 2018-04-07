@@ -62,7 +62,7 @@ function addToCart(req, res) {
 
 function insertItem(itemid, userid, callBack) {
     console.log("inserting item");
-    pool.query('INSERT INTO public.cartitems (itemid, userid) VALUES ($1::text, $2::text);', [itemid, userid], (err, res) => {
+    pool.query('INSERT INTO public.cartitems (itemid, userid) VALUES ($1::integer, $2::integer);', [itemid, userid], (err, res) => {
         if (err) {
             console.log(err);
             callBack(err);
