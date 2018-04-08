@@ -73,7 +73,7 @@
                 },
 				success: function (data) {
                     console.log("viewcart data: " + JSON.stringify(data, null, "    "));
-				    $.each(data[0], function (i, item) {
+				    $.each(data.data, function (i, item) {
                         console.log("item[]: " + JSON.stringify(item["name"], null, "    "));
                         console.log("item[]: " + JSON.stringify(item.name, null, "    "));
                         $("#itemTable").append("<tr><td>" + item["name"] + "</td></tr>");
