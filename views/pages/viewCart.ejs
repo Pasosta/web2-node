@@ -28,10 +28,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Shopping</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/viewCart">Shopping Cart</a>
                 </li>
             </ul>
@@ -41,8 +41,7 @@
 
     <main role="main" class="container">
         <div class="starter-template">
-            <h1>Pick A Widget!</h1>
-            <p>There are many like them but this one could be yours!<br></p>
+            <h1>Buy Your Widgets!</h1>
         </div>
         <div class="table-responsive">
             <table class="table" id="itemTable">
@@ -61,55 +60,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <script>
-        //This needs to give the post the itemId and the userID for the insert to work
-        function updateCart(id, quantity) {
-            console.log("ID: " + id + " Quantity: " + quantity);
-            document.getElementById("cartNum").innerHTML = Number(document.getElementById("cartNum").innerHTML) + Number(quantity);
-            $.ajax({
-				url: "/shop/addToCart",
-				type: "POST",
-				dataType: "json",
-                data: {
-                    "itemID" : id 
-                },
-				success: function (data) {
-				    var items = data;
-                    console.log(items);
-				}
-            });
-        }
-        
     $(document).ready(function () {
         loadItems();
-            function loadItems() {
-                $.ajax({
-					url: "/shop/items",
-					type: "GET",
-					dataType: "json",
-					success: function (data) {
-						var items = data;
-                        console.log(items);
-                        $("#itemTable").append("<tr>");
-                        var newRowCheck = 0;
-						$.each(items.data, function (i, item) {
-                            if (newRowCheck % 3 == 0){
-                                $("#itemTable").append("</tr><tr>");
-                            }
-							$("#itemTable").append("<td>" + "<img src=\"/wid" + (newRowCheck + 1) + ".png\" alt=\"Shopping Cart\" height=\"120\" width=\"120\"></br>" +"Name: " + item.name + "<br/> Cost: " + item.cost + "<br/> Description: " + item.description +
-                            "</br><button type=\"button\" class=\"btn btn-primary\" onclick=\"updateCart(" + (newRowCheck + 1) + ", " + 1
-                            + ")\">Add to Cart</button></td>");
-                            newRowCheck++;
-						});
-                        $("#itemTable").append("</tr>");
-					}
-				});
-            }
-        
-        //TODO: make this insert items for the user
-			$("#itemButton").click(function () {
-
-			});      
-   });
+        function loadItems() {
+            $.ajax({
+				url: "/shop/items",
+				type: "POST",
+				dataType: "json",
+				success: function (data) {
+                    console.log("viewcart data: "data);
+				}
+            });
+        }     
+    });
     </script>
 
 </body>

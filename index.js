@@ -27,20 +27,17 @@ express()
   .get('/', (req, res) => res.render('pages/login'))
   .post('/login', login)
   .post('/registerNew', shopep.registerNew)
-  .post('/viewCart', shopep.userItems)
+  .post('/viewCart', verifyLogin, (req, res) => res.render('pages/viewCart'))
   .get('/createAccount', (req, res) => res.render('pages/createAccount'))
   .get('/shop', verifyLogin, (req, res) => res.render('pages/shop'))
   .get('/shop/items', shopep.items)
-  .post('/shop/addToCart', shopep.addToCart)
+  .post('/shop/addToCart', verifyLogin, shopep.addToCart)
   .get('/shop/users', shopep.users)
-  .get('/shop/userItems', shopep.userItems)
+  .post('/shop/userItems', shopep.userItems)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
 
 function registerNew(req, res) {
     console.log("made to register");
-    console.log(req.body.username);
-    console.log(req.body.password);
     shopep.registerNew(req, res);
     res.redirect('/');
 }
