@@ -106,13 +106,14 @@ function userItems(req, res) {
 }
 
 function getItemsForUser(user, callBack) {
+        console.log("user in getitems: " + user);
         pool.query('SELECT name FROM public.items JOIN public.cartItems ON public.items.id = public.cartItems.itemId JOIN public.users ON public.cartItems.userId = public.users.id WHERE public.users.id = $1::integer;', [user], (err, res) => {
         if (err) {
             console.log(err);
             callBack(err);
         }
         itemData = {"data": res.rows};
-        console.log("items2: " + JSON.stringify(itemData, null, "    "))
+        console.log("items2: " + JSON.stringify(itemData, null, "    "));
         console.log(itemData);
         callBack(null, itemData);
     });
