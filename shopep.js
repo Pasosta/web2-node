@@ -112,6 +112,7 @@ function getItemsForUser(user, callBack) {
             callBack(err);
         }
         itemData = {"data": res.rows};
+        console.log("items2: " + JSON.stringify(itemData, null, "    "))
         console.log(itemData);
         callBack(null, itemData);
     });
