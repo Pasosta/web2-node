@@ -73,10 +73,10 @@
                 },
 				success: function (data) {
                     console.log("viewcart data: " + JSON.stringify(data, null, "    "));
-                    $.each(items.data, function (i, item) {
-                       $("#itemTable").append("<tr>" + item.name + "</tr>");
-                    }
-				});
+				    $.each(items.data, function (i, item) {
+                        $("#itemTable").append("<tr>" + item.name + "</tr>");
+				    });
+				}
             });
         }     
     });
