@@ -74,7 +74,8 @@
 				success: function (data) {
                     console.log("viewcart data: " + JSON.stringify(data, null, "    "));
 				    $.each(data, function (i, item) {
-                        $("#itemTable").append("<tr><td>" + item.name + "</td></tr>");
+                        console.log("viewcart data: " + JSON.stringify(item, null, "    "));
+                        $("#itemTable").append("<tr><td>" + item + "</td></tr>");
 				    });
 				}
             });
