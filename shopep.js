@@ -100,6 +100,7 @@ function userItems(req, res) {
     var userId = req.body.userId;
     console.log(userId);
     getItemsForUser(userId, (err, items) => {
+        console.log("items: " + items);
        res.json(items); 
     });
 }
