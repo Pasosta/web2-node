@@ -96,10 +96,8 @@ function addUser(user, pass, callBack) {
 }
 
 function userItems(req, res) {
-    console.log("userItems\n************\n");
-    console.log("req: " + JSON.stringify(req.query, null, "    "));
     console.log("req bod: " + JSON.stringify(req.body, null, "    "));
-    var userId = req.query.userId;
+    var userId = req.body.userId;
     console.log(userId);
     getItemsForUser(userId, (err, items) => {
        res.json(items); 
