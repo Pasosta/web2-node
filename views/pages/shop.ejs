@@ -83,6 +83,7 @@
         
     $(document).ready(function () {
         loadItems();
+        loadcart();
             function loadItems() {
                 $.ajax({
 					url: "/shop/items",
@@ -106,6 +107,18 @@
 					}
 				});
             }
+        
+            function loadcart() {
+                $.ajax({
+				    url: "/shop/userItems",
+				    type: "POST",
+				    dataType: "json",
+				    success: function (data) {
+                        document.getElementById("cartNum").innerHTML = Number(data.data.length);
+				    }
+                 });
+            }
+        
            function logout() {
                $.ajax({
 					url: "/logout",
