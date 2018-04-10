@@ -48,7 +48,7 @@
             </table>
         </div>
         <div class="centered">
-            <button class="btn btn-outline-primary my-2 my-sm-0">Checkout!</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" onClick="checkOut()">Checkout!</button><br/><br/>
         </div>
 
     </main>
@@ -80,7 +80,23 @@
 				    });
 				}
             });
-        }     
+        }
+        
+        function checkOut() {
+            $.ajax({
+				url: "/shop/userItems",
+				type: "POST",
+				dataType: "json",
+                data: {
+                    "userID" : 7
+                },
+				success: function (data) {
+				    $.each(data.data, function (i, item) {
+                        $("#itemTable").append("<tr><td>" + item["name"] + "</td></tr>");
+				    });
+				}
+            });
+        }
     });
     </script>
 

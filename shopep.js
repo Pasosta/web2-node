@@ -115,6 +115,14 @@ function getItemsForUser(user, callBack) {
     });
 }
 
+function checkout(req, res) {
+    console.log("checkout username: " + req.session.username);
+}
+
+function removeItems(user, callback) {
+    
+}
+
 
 //This goes into controllers
 function items(req, res) {
@@ -155,4 +163,4 @@ function getUser(name, pass, callBack) {
     });
 }
 
-module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew, auth: auth, addToCart: addToCart};
+module.exports = {users: users, items: items, userItems: userItems, registerNew: registerNew, auth: auth, addToCart: addToCart, checkout: checkout};

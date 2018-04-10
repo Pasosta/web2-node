@@ -104,11 +104,16 @@
 					}
 				});
             }
-        
-        //TODO: make this insert items for the user
-			$("#itemButton").click(function () {
-
-			});      
+           function logout() {
+               $.ajax({
+					url: "/logout",
+					type: "POST",
+					dataType: "json",
+					success: function (data) {
+						console.log("logged Out of shop");
+					}
+				});
+           } 
    });
     </script>
 
