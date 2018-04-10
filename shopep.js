@@ -125,7 +125,6 @@ function checkout(req, res) {
     pool.query('SELECT id FROM public.users WHERE public.users.username = $1::text;', [username], (err, resp) => {
         console.log("useritems res.rows: " + JSON.stringify(resp.rows[0].id, null, "    "));
         removeItems(resp.rows[0].id);
-        res.redirect("/logout");
     });
 }
 
