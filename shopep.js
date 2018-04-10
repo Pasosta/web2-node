@@ -102,6 +102,7 @@ function userItems(req, res) {
         console.log("useritems res.rows: " + JSON.stringify(resp.rows[0].id, null, "    "));
         getItemsForUser(resp.rows[0].id, (err, items) => {
             res.json(items); 
+            
         });
     });
 }
