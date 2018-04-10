@@ -57,7 +57,6 @@ function logout(req, res, next) {
 function checkout(req, res, next) {
     console.log("middleCheckout");
     shopep.checkout(req,res);
-    window.alert("You bought some widgets!");
     next();
 }
 
