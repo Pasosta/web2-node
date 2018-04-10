@@ -36,7 +36,8 @@
                 </li>
             </ul>
             <button class="btn btn-outline-success my-2 my-sm-0" id="cartButton" type="button" onclick="location.href='/viewCart'"><img src="/box.svg" alt="Shopping Cart"><div id="cartNum">0</div></button>
-            <button class="btn btn-primaty my-2 my-sm-0" id="logout" type="button" onclick="location.href='/logout'">Log Out</button>
+            &nbsp;
+            <button class="btn btn-primary my-2 my-sm-0" id="logout" type="button" onclick="location.href='/logout'">Log Out</button>
         </div>
     </nav>
 
@@ -108,7 +109,7 @@
            function logout() {
                $.ajax({
 					url: "/logout",
-					type: "POST",
+					type: "GET",
 					dataType: "json",
 					success: function (data) {
 						console.log("logged Out of shop");

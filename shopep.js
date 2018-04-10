@@ -98,7 +98,7 @@ function addUser(user, pass, callBack) {
 function userItems(req, res) {
     var username = req.session.username;
     console.log("useritems username: " + username);
-    pool.query('SELECT id FROM public.users WHERE public.users.username = $1::text;', [user], (err, res) => {
+    pool.query('SELECT id FROM public.users WHERE public.users.username = $1::text;', [username], (err, res) => {
         console.log("useritems res.rows: " + res.rows);
         getItemsForUser(userId, (err, items) => {
             res.json(items); 
