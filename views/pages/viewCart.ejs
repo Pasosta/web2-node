@@ -71,9 +71,6 @@
 				url: "/shop/userItems",
 				type: "POST",
 				dataType: "json",
-                data: {
-                    "userID" : 7
-                },
 				success: function (data) {
 				    $.each(data.data, function (i, item) {
                         $("#itemTable").append("<tr><td>" + item["name"] + "</td></tr>");

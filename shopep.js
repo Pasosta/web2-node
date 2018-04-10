@@ -96,16 +96,19 @@ function addUser(user, pass, callBack) {
 }
 
 function userItems(req, res) {
-    var userId = req.body["userID"];
-    console.log(userId);
-    getItemsForUser(userId, (err, items) => {
-       res.json(items); 
+    var username = req.session.username;
+    console.log("useritems username: " + username);
+    pool.query('SELECT id FROM public.users WHERE public.users.username = $1::text;', [user], (err, res) => {
+        console.log("useritems res.rows: " + res.rows);
+        getItemsForUser(userId, (err, items) => {
+            res.json(items); 
+        });
     });
 }
 
 function getItemsForUser(user, callBack) {
-        console.log("user in getitems: " + user);
-        pool.query('SELECT name FROM public.items JOIN public.cartItems ON public.items.id = public.cartItems.itemId JOIN public.users ON public.cartItems.userId = public.users.id WHERE public.users.id = $1::integer;', [user], (err, res) => {
+    console.log("user in getitems: " + user);
+    pool.query('SELECT name FROM public.items JOIN public.cartItems ON public.items.id = public.cartItems.itemId JOIN public.users ON public.cartItems.userId = public.users.id WHERE public.users.id = $1::integer;', [user], (err, res) => {
         if (err) {
             console.log(err);
             callBack(err);
