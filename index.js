@@ -27,8 +27,8 @@ express()
   .get('/', (req, res) => res.render('pages/login'))
   .post('/login', login)
   .post('/registerNew', shopep.registerNew)
-  .get('/logout', logout, (req, res) => res.render('pages/login'))
-  .post('/checkout', checkout, logout, (req, res) => res.redirect('pages/login'))
+  .get('/logout', logout)
+  .post('/checkout', checkout, logout)
   .get('/viewCart', verifyLogin, (req, res) => res.render('pages/viewCart'))
   .get('/createAccount', (req, res) => res.render('pages/createAccount'))
   .get('/shop', verifyLogin, (req, res) => res.render('pages/shop'))
@@ -48,10 +48,10 @@ function login(req, res) {
     shopep.auth(req, res);
 }
 
-function logout(req, res, next) {
+function logout(req, res) {
     console.log("logged out");
     req.session.destroy();
-    next();
+    res.redirect('/');
 }
 
 function checkout(req, res, next) {
