@@ -120,11 +120,21 @@ function getItemsForUser(user, callBack) {
 }
 
 function checkout(req, res) {
+    let username = req.session.username;
     console.log("checkout username: " + req.session.username);
+    pool.query('SELECT id FROM public.users WHERE public.users.username = $1::text;', [username], (err, resp) => {
+        console.log("useritems res.rows: " + JSON.stringify(resp.rows[0].id, null, "    "));
+        removeItems(resp.rows[0].id);
+    });
 }
 
-function removeItems(user, callback) {
-    
+function removeItems(user) {
+    pool.query('DELETE FROM public.cartitems WHERE userid = $1::integer;', [user], (err, res) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log("removed items from cart");
+    });
 }
 
 
