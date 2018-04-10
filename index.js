@@ -50,8 +50,7 @@ function login(req, res) {
 
 function logout(req, res, next) {
     console.log("logged out");
-    req.session.loggedIn = false;
-    req.sessoin.username = "";
+    req.session.destroy();
     next();
 }
 
