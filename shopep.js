@@ -98,9 +98,9 @@ function addUser(user, pass, callBack) {
 function userItems(req, res) {
     var username = req.session.username;
     console.log("useritems username: " + username);
-    pool.query('SELECT id FROM public.users WHERE public.users.username = $1::text;', [username], (err, res) => {
-        console.log("useritems res.rows: " + JSON.stringify(res.rows[0].id, null, "    "));
-        getItemsForUser(res.rows[0].id, (err, items) => {
+    pool.query('SELECT id FROM public.users WHERE public.users.username = $1::text;', [username], (err, resp) => {
+        console.log("useritems res.rows: " + JSON.stringify(resp.rows[0].id, null, "    "));
+        getItemsForUser(resp.rows[0].id, (err, items) => {
             res.json(items); 
         });
     });
